@@ -1,0 +1,12 @@
+[user]
+	name = Will Theodore
+	email = 40131238+willtheodore@users.noreply.github.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	editor = nvim
+[pull]
+	rebase = false

@@ -3,7 +3,7 @@ local map = require("utils").map
 -- TELESCOPE
 vim.g.mapleader = " "
 map("n", "<Leader>f", [[:lua require("telescope.builtin").live_grep({grep_open_files = true})<CR>]])
-map("n", "<Leader>p", [[:lua require("telescope.builtin").find_files()<CR>]])
+map("n", "<Leader>p", [[:lua require("telescope.builtin").find_files({hidden=true})<CR>]])
 map("n", "<Leader>h", [[:lua require("telescope.builtin").help_tags()<CR>]])
 
 -- LSP
@@ -21,46 +21,16 @@ map("n", "<Leader>cl", [[:CommentToggle]])
 map("n", "<Leader>cv", [[:'<,'>CommentToggle]])
 
 ----- file browser
-map("n", "<Leader>e", [[:Telescope file_browser<CR>]])
+map("n", "<Leader>e", [[:NERDTreeFocus<CR>]])
 
--- AUTOCMDS
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = [[%s/\s\+$//e]],
-})
+----- tabs
+map("n", "<Leader>tn", [[:tabnew<CR>]])
+map("n", "<Leader>tc", [[:tabclose<CR>]])
+map("n", "<Leader>]", [[:tabnext<CR>]])
+map("n", "<Leader>[", [[:tabprevious<CR>]])
+map("n", "<Leader>t1", [[:tabn 1<CR>]])
+map("n", "<Leader>t2", [[:tabn 2<CR>]])
+map("n", "<Leader>t3", [[:tabn 3<CR>]])
+map("n", "<Leader>t4", [[:tabn 4<CR>]])
+map("n", "<Leader>t5", [[:tabn 5<CR>]])
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	pattern = { "*" },
-	command = [[:lua require("telescope.builtin").find_files()]],
-})
-
-vim.api.nvim_create_autocmd({
-	"LspAttach",
-	{
-		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-		callback = function(ev)
-			-- enable completition with <c-x><c-o>
-			vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-			local opts = { buffer = ev.buf }
-
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, opts)
-			vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-			vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			vim.keymap.set("n", "<space>f", function()
-				vim.lsp.buf.format({ async = true })
-			end, opts)
-		end,
-	},
-})

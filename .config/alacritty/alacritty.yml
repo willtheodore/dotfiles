@@ -15,7 +15,7 @@ font:
   normal:
     family: "SFMono Nerd Font"
     style: Regular
-  size: 13.0
+  size: 14.0
 
 key_bindings:
   - { key: Key1, mods: Command, chars: "\x021" } # select tmux window 1
@@ -36,6 +36,7 @@ key_bindings:
   - { key: RBracket, mods: Command, chars: "\x09" } # navigate forward
   - { key: S, mods: Command, chars: "\x1b\x3a\x77\x0a" } # save vim buffer
   - { key: H, mods: Command|Shift, chars: "\x02h" } # Change left
-  - { key: J, mods: Command|Shift, chars: "\x02j" } # Change down
-  - { key: K, mods: Command|Shift, chars: "\x02k" } # Change up
+  - { key: J, mods: Command, chars: "\x02j" } # Change down
+  - { key: K, mods: Command, chars: "\x02k" } # Change up
   - { key: L, mods: Command, chars: "\x02l" } # Change right
+  - { key: Period, mods: Command, chars: "\x20ca" } # Change right

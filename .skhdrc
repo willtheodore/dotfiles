@@ -8,11 +8,6 @@
 default < hyper - w ; windows
 windows < hyper - w ; default
 
-# Other
-
-default < hyper - b : skhd -k "ctrl-b"
-default < hyper - return : skhd -k "ctrl-f11"
-default < hyper - space : skhd -k "ctrl-f10"
 
 # FOCUS
 default < hyper - h : yabai -m window --focus west

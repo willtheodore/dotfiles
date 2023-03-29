@@ -1,13 +1,46 @@
 local o = vim.o
+local g = vim.g
 
 -- colors
 o.background = "dark"
 o.termguicolors = true
-vim.cmd("colorscheme spacegray-dark")
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-vim.cmd("hi SignColumn guibg=NONE ctermbg=NONE")
-vim.cmd("hi LineNr guibg=NONE ctermbg=NONE")
-vim.cmd("hi EndOfBuffer guibg=NONE ctermbg=NONE")
+vim.cmd("colorscheme tokyonight")
+
+do -- fix transparency
+	local groups = {
+		"Normal",
+		"NormalNC",
+		"Comment",
+		"Constant",
+		"Special",
+		"Identifier",
+		"Statement",
+		"PreProc",
+		"Type",
+		"Underlined",
+		"Todo",
+		"String",
+		"Function",
+		"Conditional",
+		"Repeat",
+		"Operator",
+		"Structure",
+		"LineNr",
+		"NonText",
+		"SignColumn",
+		"CursorLineNr",
+		"EndOfBuffer",
+	}
+
+	for _, v in ipairs(groups) do
+		pcall(function()
+			local attrs =
+				vim.tbl_extend("force", vim.api.nvim_get_hl_by_name(v, true), { bg = "NONE", ctermbg = "NONE" })
+			attrs[true] = nil
+			vim.api.nvim_set_hl(0, v, attrs)
+		end)
+	end
+end
 
 -- settings
 o.hidden = true
@@ -33,3 +66,7 @@ o.incsearch = true
 o.signcolumn = "yes"
 o.colorcolumn = "100"
 
+-- NERDTree
+g.NERDTreeShowHidden = true
+g.NERDTreeMinimalUI = true
+g.NERDTreeMinimalMenu = true
