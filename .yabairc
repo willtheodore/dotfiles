@@ -1,0 +1,42 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m signal --add event=window_resized action="zsh ~/.config/yabai/window-resized.zsh"
+
+alias yc='yabai -m config'
+alias yr='yabai -m rule --add'
+
+yc debug_output on
+
+# LAYOUT
+yc layout bsp
+yc top_padding    10
+yc bottom_padding 10
+yc left_padding   10
+yc right_padding  10
+yc window_gap 10
+yc window_shadow off
+yc window_topmost off
+
+# BORDER
+yc window_border on
+yc active_window_border_color 0xFFaf38eb
+yc normal_window_border_color 0x00FFFFFF
+
+# FOCUS
+yc window_shadow float
+yc auto_balance off
+yc split_ration 0.5
+
+# FLOAT APPS
+yr app="System Settings"
+# yr app="Spotify"
+yr app="Messages"
+yr app="Finder"
+yr app="Calendar"
+# yr app="zoom.us"
+
+# yabai -m signal --add event=application_activated action="pkill -SIGUSR1 limelight &> /dev/null"
+
+# killall limelight &> /dev/null
+# /usr/local/bin/limelight/bin/limelight &> /dev/null &

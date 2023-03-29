@@ -1,0 +1,41 @@
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 0.8
+  padding:
+    x: 18
+    y: 16
+  dynamic_padding: false
+  decorations: buttonless
+
+font:
+  normal:
+    family: "SFMono Nerd Font"
+    style: Regular
+  size: 13.0
+
+key_bindings:
+  - { key: Key1, mods: Command, chars: "\x021" } # select tmux window 1
+  - { key: Key2, mods: Command, chars: "\x022" } #                ... 2
+  - { key: Key3, mods: Command, chars: "\x023" } #                ... 3
+  - { key: Key4, mods: Command, chars: "\x024" } #                ... 4
+  - { key: Key5, mods: Command, chars: "\x025" } #                ... 5
+  - { key: Key6, mods: Command, chars: "\x026" } #                ... 6
+  - { key: Key7, mods: Command, chars: "\x027" } #                ... 7
+  - { key: Key8, mods: Command, chars: "\x028" } #                ... 8
+  - { key: Key9, mods: Command, chars: "\x029" } #                ... 9
+  - { key: Comma, mods: Command, chars: "\x02," } # rename the current tmux window
+  - { key: T, mods: Command, chars: "\x02c" } # create a new tmux window
+  - { key: W, mods: Command, chars: "\x02x" } # kill the current pane
+  - { key: Z, mods: Command, chars: "\x02z" } # toggle zoom state of the current tmux pane
+  - { key: F, mods: Command|Shift, chars: "\x02\x5b\x2f" } # start tmux search mode
+  - { key: LBracket, mods: Command, chars: "\x0f" } # navigate back (ctrl+o)
+  - { key: RBracket, mods: Command, chars: "\x09" } # navigate forward
+  - { key: S, mods: Command, chars: "\x1b\x3a\x77\x0a" } # save vim buffer
+  - { key: H, mods: Command|Shift, chars: "\x02h" } # Change left
+  - { key: J, mods: Command|Shift, chars: "\x02j" } # Change down
+  - { key: K, mods: Command|Shift, chars: "\x02k" } # Change up
+  - { key: L, mods: Command, chars: "\x02l" } # Change right
