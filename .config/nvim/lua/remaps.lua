@@ -3,6 +3,7 @@ local map = require("utils").map
 -- TELESCOPE
 vim.g.mapleader = " "
 map("n", "<Leader>f", [[:lua require("telescope.builtin").live_grep({grep_open_files = true})<CR>]])
+map("n", "<Leader>F", [[:lua require("telescope.builtin").live_grep({grep_open_files = false})<CR>]])
 map("n", "<Leader>p", [[:lua require("telescope.builtin").find_files({hidden=true})<CR>]])
 map("n", "<Leader>h", [[:lua require("telescope.builtin").help_tags()<CR>]])
 
@@ -33,4 +34,3 @@ map("n", "<Leader>t2", [[:tabn 2<CR>]])
 map("n", "<Leader>t3", [[:tabn 3<CR>]])
 map("n", "<Leader>t4", [[:tabn 4<CR>]])
 map("n", "<Leader>t5", [[:tabn 5<CR>]])
-

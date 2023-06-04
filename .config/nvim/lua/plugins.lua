@@ -52,4 +52,7 @@ packer.startup(function(use)
 
 	-- Status Line
 	use("nvim-lualine/lualine.nvim")
+
+	-- Wakatime
+	use("wakatime/vim-wakatime")
 end)
